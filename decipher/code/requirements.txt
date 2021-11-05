@@ -1,0 +1,4 @@
+subword-nmt
+efficiency
+sacremoses
+torchtext

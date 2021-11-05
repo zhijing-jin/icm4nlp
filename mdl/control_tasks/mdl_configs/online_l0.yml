@@ -1,0 +1,33 @@
+source_lang: en
+target_lang: es
+direction_causal: True
+batch_size: 1
+dummy: True
+trim_length: 400
+model:
+  hidden_dim: 1024 # ELMo hidden dim
+  model_type: identity 
+probe:
+  task_name: translation
+  params_path: predictor.params
+regimen:
+  type: online_coding # none, bayes, online_coding
+  inds: 0.001,0.002,0.004,0.008,0.016,0.032,0.0625,0.125,0.25,0.5,1
+probe_training:
+  epochs: 10
+  loss: cross-entropy
+  weight_decay: 0.01
+  learning_rate: 0.001
+reporting:
+  fixed_directory: online_l0   # CHANGE THIS: output dir with ckpts and logs
+  root: report
+  prediction_paths:
+    train_path: train.predictions
+    dev_path: dev.predictions
+    test_path: test.predictions
+  reporting_methods:
+    - translation
+
+
+
+
